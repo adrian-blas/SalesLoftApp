@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row justify-content-center mt-3 mb-3 no-gutters">
+        <div class="col-12">
+            <button type="button" class="btn btn-lg btn-outline-info" (click)="getFrequency()" [disabled]="loadFrequency">Search frequency</button>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5 mb-5 no-gutters">
+        <div class="col-12">
+            <div class="table-responsive-sm table-responsive-md table-striped">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Character</th>
+                            <th scope="col">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="loadFrequency">
+                        <tr>
+                            <td colspan="3">
+                                <div class="row justify-content-center no-gutters">
+                                    <div class="col-12 text-center">
+                                        <span class="spinner-border sppiner-searching text-primary" role="status"></span>
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="!loadFrequency">
+                        <tr *ngIf="frequency.length === 0">
+                            <td colspan="3">Empty data</td>
+                        </tr>
+                        <tr *ngFor="let freq of frequency | orderBy:'count':true; let indice=index" class="th-style">
+                            <th scope="row">{{ indice + 1 }}</th>
+                            <td>{{ freq.charName }}</td>
+                            <td>{{ freq.count }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

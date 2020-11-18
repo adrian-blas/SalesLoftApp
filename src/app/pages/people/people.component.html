@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row justify-content-center mt-5 mb-5 no-gutters">
+        <div class="col-12">
+            <div class="table-responsive-sm table-responsive-md table-striped">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Display name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Job title</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="loadPeople">
+                        <tr>
+                            <td colspan="4">
+                                <div class="row justify-content-center no-gutters">
+                                    <div class="col-12 text-center">
+                                        <span class="spinner-border sppiner-searching text-primary" role="status"></span>
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="!loadPeople">
+                        <tr *ngFor="let pep of people ; let indice=index" class="th-style">
+                            <th scope="row">{{ indice + 1 }}</th>
+                            <td>{{ pep.display_name }}</td>
+                            <td>{{ pep.email_address }}</td>
+                            <td>{{ pep.title }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
